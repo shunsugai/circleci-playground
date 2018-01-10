@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.0-node-browsers
-      - user: root
+        user: root
     steps:
       - run:
           command: whoami
