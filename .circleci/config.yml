@@ -2,12 +2,19 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.0-node-browsers
-        user: root
+      - image: circleci/node:8-browsers
     steps:
       - run:
-          command: cat
-      - run:
+          name: Install lighthouse
           command: |
-            echo $VAR1
-            echo $VAR2
+            sudo npm install -g lighthouse
+      - run:
+          name: Check lighthouse
+          command: |
+            lighthouse --version
+      - run:
+          name: Run lighthouse
+          command: |
+            lighthouse https://blog.sshn.me/ --save-assets
+      - store_artifacts:
+          path: '.'
