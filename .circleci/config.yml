@@ -6,4 +6,8 @@ jobs:
         user: root
     steps:
       - run:
-          command: whoami
+          command: cat
+      - run:
+          command: |
+            echo $VAR1
+            echo $VAR2
