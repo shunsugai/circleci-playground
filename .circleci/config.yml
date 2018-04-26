@@ -2,12 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.0-node-browsers
-        user: root
+      - image: circleci/ruby:2.5.0
+    branches:
+        only:
+          - master
     steps:
       - run:
-          command: cat
-      - run:
-          command: |
-            echo $VAR1
-            echo $VAR2
+          command: echo "This job runs on only master branch"
